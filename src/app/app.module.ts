@@ -4,6 +4,8 @@ import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 
+import { Data } from '../providers/data';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -19,6 +21,6 @@ import { Page2 } from '../pages/page2/page2';
     Page1,
     Page2
   ],
-  providers: []
+  providers: [Data]
 })
 export class AppModule {}
