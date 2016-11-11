@@ -12,7 +12,7 @@ export class Page1 {
 
 	offers: any;
   constructor(public navCtrl: NavController) {
-    this.offers = {title: 'January Sale', text: 'Is on now'};
+    this.offers = [{title: 'January Sale', text: 'Is on now'}, {title: 'Easter Sale', text: 'Is on a bit later'}];
   }
 
 }
