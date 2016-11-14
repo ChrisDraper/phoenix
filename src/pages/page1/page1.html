@@ -3,20 +3,20 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Page One</ion-title>
+    <ion-title>Moonshine</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>IProject Phoenix</h3>
-
-
-
+  <ion-refresher (ionRefresh)="pullRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list>
-  <ion-item  *ngFor="let offer of offers">
+  <ion-card  *ngFor="let offer of offers">
+     <img src="{{offer.image}}" alt="{{offer.title}}"> 
     <h2>{{offer.title}}</h2>
     <p>{{offer.text}}</p>
-  </ion-item>
+  </ion-card>
 </ion-list>
 
 </ion-content>

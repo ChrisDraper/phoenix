@@ -14,28 +14,50 @@ export class Page1 {
 
 
   constructor(public navCtrl: NavController, public dataService: Data, private http: Http, public alertCtrl: AlertController) {
-    this.account = '6';
-    this.offers = [{title: 'January Sale', text: 'Is on now'}, {title: 'Easter Sale', text: 'Is on a bit later'}];
+    this.account = '1';
+    this.offers = [];
     this.getOffers();
  }
 
   getOffers() {
-     this.http.get('http://portal.mi-app.co.uk/connection.php?account=6')
+     this.http.get('http://portal.mi-app.co.uk/connection.php?account=' + this.account)
               .map(res => res.json())
               .subscribe(
                   data => {
-                    console.log('Data: ' + data[0].title);
-                    this.offers = [{title: data[0].title, text: data[0].description}];
-                    //setTimeout(() => {
-                     // this.offers = this.dataService.formatObservation(data.SiteRep.DV);
-                      
-                    //}, 1500);
+                    var offer: any;
+                    for (offer of data) {
+                        this.offers.push({image: offer.image, title: offer.title, text: offer.subtitle});
+                    }
                   },
                   error => {
                       console.log(error)
                       this.showConectionErrAlert();
                   });
   }  
+
+
+  pullRefresh(refresher) {
+     this.offers = [];
+     this.http.get('http://portal.mi-app.co.uk/connection.php?account=' + this.account)
+              .map(res => res.json())
+              .subscribe(
+                  data => {
+                    setTimeout(() => {
+                        refresher.complete();
+                        var offer: any;
+                        for (offer of data) {
+                            this.offers.push({image: offer.image, title: offer.title, text: offer.subtitle});
+                        }
+                    }, 2000);
+                  },
+                  error => {
+                    setTimeout(() => {
+                        this.showConectionErrAlert();
+                        refresher.complete();
+                    }, 2000);
+                  });
+  }
+
   
   showConectionErrAlert() {
       let alert = this.alertCtrl.create({
