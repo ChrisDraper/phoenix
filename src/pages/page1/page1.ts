@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, ToastController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import {Data} from '../../providers/data';
 import { OfferPage } from '../../pages/offer/offer';
@@ -14,7 +14,7 @@ export class Page1 {
   account: any;
 
 
-  constructor(public navCtrl: NavController, public dataService: Data, private http: Http, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public dataService: Data, private http: Http, public alertCtrl: AlertController, private toastCtrl: ToastController) {
     this.account = '1';
     this.offers = [];
     this.getOffers();
@@ -38,7 +38,6 @@ export class Page1 {
 
 
   pullRefresh(refresher) {
-     this.offers = [];
      this.http.get('http://portal.mi-app.co.uk/mi-app_feed.php?account=' + this.account)
               .map(res => res.json())
               .subscribe(
@@ -49,6 +48,7 @@ export class Page1 {
                         for (offer of data) {
                             this.offers.push({image: offer.image, title: offer.title, text: offer.subtitle, description: offer.description});
                         }
+                        this.presentToast('Offers updated', 'top');
                     }, 2000);
                   },
                   error => {
@@ -75,5 +75,15 @@ export class Page1 {
       });
       alert.present();
   }
+
+  presentToast(message, position) {
+    let toast = this.toastCtrl.create({
+        message: message,
+        duration: 2000,
+        position: position
+    });
+
+    toast.present();
+}
 
 }
