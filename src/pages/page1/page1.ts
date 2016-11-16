@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import {Data} from '../../providers/data';
+import { OfferPage } from '../../pages/offer/offer';
 
 @Component({
   selector: 'page-page1',
@@ -9,7 +10,7 @@ import {Data} from '../../providers/data';
 })
 export class Page1 {
 
-	offers: any;
+  offers: any;
   account: any;
 
 
@@ -20,13 +21,13 @@ export class Page1 {
  }
 
   getOffers() {
-     this.http.get('http://portal.mi-app.co.uk/connection.php?account=' + this.account)
+     this.http.get('http://portal.mi-app.co.uk/mi-app_feed.php?account=' + this.account)
               .map(res => res.json())
               .subscribe(
                   data => {
                     var offer: any;
                     for (offer of data) {
-                        this.offers.push({image: offer.image, title: offer.title, text: offer.subtitle});
+                        this.offers.push({image: offer.image, title: offer.title, text: offer.subtitle, description: offer.description});
                     }
                   },
                   error => {
@@ -38,7 +39,7 @@ export class Page1 {
 
   pullRefresh(refresher) {
      this.offers = [];
-     this.http.get('http://portal.mi-app.co.uk/connection.php?account=' + this.account)
+     this.http.get('http://portal.mi-app.co.uk/mi-app_feed.php?account=' + this.account)
               .map(res => res.json())
               .subscribe(
                   data => {
@@ -46,7 +47,7 @@ export class Page1 {
                         refresher.complete();
                         var offer: any;
                         for (offer of data) {
-                            this.offers.push({image: offer.image, title: offer.title, text: offer.subtitle});
+                            this.offers.push({image: offer.image, title: offer.title, text: offer.subtitle, description: offer.description});
                         }
                     }, 2000);
                   },
@@ -56,6 +57,13 @@ export class Page1 {
                         refresher.complete();
                     }, 2000);
                   });
+  }
+
+   viewOffer(event, offer) {
+
+     this.navCtrl.push(OfferPage, {
+         offer : offer
+     });
   }
 
   

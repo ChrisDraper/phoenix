@@ -12,7 +12,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ion-list>
-  <ion-card  *ngFor="let offer of offers">
+  <ion-card  *ngFor="let offer of offers" (click)="viewOffer($event, offer)">
      <img src="{{offer.image}}" alt="{{offer.title}}"> 
     <h2>{{offer.title}}</h2>
     <p>{{offer.text}}</p>

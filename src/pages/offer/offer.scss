@@ -1,11 +1,12 @@
-page-page1 {
-
-    .scroll-content {
+page-offer {
+    ion-content, .scroll-content {
         padding:0 !important;
     }
 
     ion-card {
-        padding: 10px;
+        padding: 0px;
+        margin: 0 !important;
+        width: 100% !important;
     }
 
     ion-card h2 {
@@ -15,4 +16,5 @@ page-page1 {
     ion-card p {
         padding:5px 20px;
     }
+
 }
