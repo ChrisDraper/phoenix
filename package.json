@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "moonshine",
+  "author": "Chris Draper",
+  "homepage": "http://mi-app.co.uk/",
   "private": true,
   "scripts": {
     "ionic:build": "ionic-app-scripts build",
@@ -44,5 +44,5 @@
       "locator": "ios"
     }
   ],
-  "description": "newSideMenu: An Ionic project"
+  "description": "Moonshine"
 }
