@@ -5,14 +5,63 @@ page-offerlist {
     }
 
     ion-card {
-        padding: 10px;
+        padding: 0 0 20px 0;
+        border-radius: 4px !important;
+    }
+    ion-card .image {
+        position: relative;
+    }
+
+    ion-card .info-bar {
+        position:absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        z-index:9;
+        background:rgba(3,27,34,0.7);
+        padding:10px 10%;
+    }
+
+
+    ion-card .info-bar {
+        box-sizing: border-box;
+    }
+
+    ion-card .info-bar .ad-type, ion-card .info-bar .daysleft {
+        padding:0.3em 0;
+        background-size: 23px 20px;
+        background-repeat: no-repeat;
+        background-position:1em center;
+        color:#fff;
+        text-shadow:none;
+        font-size:1em;
+        width:50%;
+        float:left;
+        box-sizing:border-box;
+    }
+
+   ion-card .info-bar .daysleft {
+        padding:0.3em 0 0.3em 4em;
+    }
+        
+    ion-card .info-bar .daysleft {
+        background-image:url(/assets/images/clock-white.svg);
+    }
+    
+    ion-card h1, ion-card h2 {
+        display:block;
+        text-decoration:none;
+        padding:0 10%;
+        color:#444;
+    }
+
+    ion-card h1 {
+        font-size: 1.9rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
     }
 
     ion-card h2 {
-        padding:10px 20px;
-    }
-
-    ion-card p {
-        padding:5px 20px;
+       
     }
 }

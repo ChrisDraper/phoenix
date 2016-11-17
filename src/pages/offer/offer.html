@@ -5,20 +5,15 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>{{offer.title}}</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
 <ion-content padding>
-
   <ion-card>
     <img src="{{offer.image}}" alt="{{offer.title}}"> 
-    <h2>{{offer.title}}</h2>
-    <p>{{offer.text}}</p>
-    <p>{{offer.description}}</p>
+    <h1>{{offer.title}}</h1>
+    <h2>{{offer.subtitle}}</h2>
+    <p [innerHTML]="offer.description"></p>
   </ion-card>
 </ion-content>

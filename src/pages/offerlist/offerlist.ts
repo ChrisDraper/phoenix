@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, ToastController } from 'ionic-angular';
 import { Http } from '@angular/http';
-import {Data} from '../../providers/data';
+import { Data } from '../../providers/data';
 import { OfferPage } from '../../pages/offer/offer';
 
 @Component({
@@ -27,14 +27,10 @@ export class Offerlist {
               .map(res => res.json())
               .subscribe(
                   data => {
-                    var offer: any;
-                    for (offer of data) {
-                        this.offers.push({image: offer.image, title: offer.title, text: offer.subtitle, description: offer.description});
-                    }
+                      this.offers = this.dataService.formatFeed(data);
                   },
                   error => {
-                      console.log(error)
-                      this.showConectionErrAlert();
+                      this.presentToast('Connection not available', 'middle');
                   });
   }  
 
@@ -46,16 +42,13 @@ export class Offerlist {
                   data => {
                     setTimeout(() => {
                         refresher.complete();
-                        var offer: any;
-                        for (offer of data) {
-                            this.offers.push({image: offer.image, title: offer.title, text: offer.subtitle, description: offer.description});
-                        }
+                        this.offers = this.dataService.formatFeed(data);
                         this.presentToast('Offers updated', 'top');
                     }, 2000);
                   },
                   error => {
                     setTimeout(() => {
-                        this.showConectionErrAlert();
+                        this.presentToast('Connection not available', 'middle');
                         refresher.complete();
                     }, 2000);
                   });
@@ -66,16 +59,6 @@ export class Offerlist {
      this.navCtrl.push(OfferPage, {
          offer : offer
      });
-  }
-
-  
-  showConectionErrAlert() {
-      let alert = this.alertCtrl.create({
-        title: 'Oh bother!!',
-        subTitle: 'Connection to latest data is unavailable.',
-        buttons: ['FAIR ENOUGH']
-      });
-      alert.present();
   }
 
   presentToast(message, position) {
