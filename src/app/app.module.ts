@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+import { Offerlist } from '../pages/offerlist/offerlist';
+import { About } from '../pages/about/about';
 import { OfferPage } from '../pages/offer/offer';
 
 import { Data } from '../providers/data';
@@ -10,8 +10,8 @@ import { Data } from '../providers/data';
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
-    Page2,
+    Offerlist,
+    About,
     OfferPage
   ],
   imports: [
@@ -20,8 +20,8 @@ import { Data } from '../providers/data';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
-    Page2,
+    Offerlist,
+    About,
     OfferPage
   ],
   providers: [Data]

@@ -5,23 +5,25 @@ import {Data} from '../../providers/data';
 import { OfferPage } from '../../pages/offer/offer';
 
 @Component({
-  selector: 'page-page1',
-  templateUrl: 'page1.html'
+  selector: 'page-offerlist',
+  templateUrl: 'offerlist.html'
 })
-export class Page1 {
+export class Offerlist {
 
   offers: any;
   account: any;
+  feedUrl: string;
 
 
   constructor(public navCtrl: NavController, public dataService: Data, private http: Http, public alertCtrl: AlertController, private toastCtrl: ToastController) {
     this.account = '1';
+    this.feedUrl = 'https://www.mi-app.co.uk/adbuilder/mi-app_feed.php?account=';
     this.offers = [];
     this.getOffers();
  }
 
   getOffers() {
-     this.http.get('http://portal.mi-app.co.uk/mi-app_feed.php?account=' + this.account)
+     this.http.get(this.feedUrl + this.account)
               .map(res => res.json())
               .subscribe(
                   data => {
@@ -38,7 +40,7 @@ export class Page1 {
 
 
   pullRefresh(refresher) {
-     this.http.get('http://portal.mi-app.co.uk/mi-app_feed.php?account=' + this.account)
+     this.http.get(this.feedUrl + this.account)
               .map(res => res.json())
               .subscribe(
                   data => {
