@@ -80,4 +80,6 @@ export class Data {
 			desc = description.replace(/[\\\n]+/g, '<br />');
       return desc;
   }
+
+
 }

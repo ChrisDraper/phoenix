@@ -12,8 +12,17 @@
 <ion-content padding>
   <ion-card>
     <img src="{{offer.image}}" alt="{{offer.title}}"> 
-    <h1>{{offer.title}}</h1>
-    <h2>{{offer.subtitle}}</h2>
-    <p [innerHTML]="offer.description"></p>
+    <div class="inner">
+        <h1 [innerHTML]="offer.title"></h1>
+        <h2 *ngIf="offer.subtitle" [innerHTML]="offer.subtitle"></h2>
+        <div class="ui-grid-a group">
+          <div class="ui-block-a">{{offer.adtype}}</div>
+          <div class="ui-block-b">{{offer.daysleft}}</div>
+        </div>
+        <h2 class="about">About this offer</h2>
+        <p *ngIf="offer.description" [innerHTML]="offer.description"></p>
+        <p *ngIf="offer.voucher" class="voucher">{{offer.voucher}}</p>
+        <a *ngIf="offer.voucherurl" href="{{offer.voucherurl}}" data-rel="external" class="ui-btn weblink">Visit site</a>
+		</div>
   </ion-card>
 </ion-content>

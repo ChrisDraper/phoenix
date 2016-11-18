@@ -9,12 +9,86 @@ page-offer {
         width: 100% !important;
     }
 
-    ion-card h2 {
-        padding:10px 20px;
+    ion-card h1, ion-card h2  {
+        margin:0;
+        padding:0
     }
 
-    ion-card p {
-        padding:5px 20px;
+    ion-card h2.about {
+        margin-bottom:10px;
+    }
+
+    ion-card .inner {
+        padding:1em 2em;
+    }
+
+    ion-card .ui-grid-a {
+        margin:1.7em 0;
+    }
+
+    ion-card .ui-grid-a:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    ion-card .ui-grid-a .ui-block-a, ion-card .ui-grid-a .ui-block-b {
+        line-height:30px;
+        background-size: 23px 20px;
+        background-repeat: no-repeat;
+        background-position:left center;
+        float:left;
+        width:50%;
+    }
+
+    ion-card .ui-grid-a .ui-block-b {
+        padding-left:30px;
+        box-sizing:border-box;
+    }
+
+    ion-card .ui-grid-a .ui-block-b {
+        background-image:url(/assets/images/clock.svg);
+    }
+
+    ion-card .voucher {
+        text-align:center;
+        border:1px dashed #444;
+        padding:0.5em 0;
+        border-radius:5px;
+        background:#eeeeee;
+        font-size:1.5em;
+        margin:1em 0;
+    }
+
+
+    ion-card .contact-info {
+        background:#031B22;
+        padding:10px 30px;
+        text-align:center;
+    }
+
+    ion-card .contact-info p {
+        color:#ffffff;	
+    }
+
+    ion-card .weblink, .weblink {
+        margin:1em 0;
+        border: 1px solid;
+        border-color: #2685ad #247fa5 #227598 #247fa5;
+        color: #FFFFFF !important;
+        border-radius: 0.25em;
+        font-size: 1.45em;
+        padding: 1em 2.8em;
+        background-color: #298fba !important;
+        background: -webkit-gradient(linear,left bottom,left top,color-stop(0,#298fba),color-stop(1,#41a9d5)) !important;
+        background: -ms-linear-gradient(bottom,#298fba,#41a9d5) !important;
+        background: -moz-linear-gradient(center bottom,#298fba 0%,#41a9d5 100%) !important;
+        background: -o-linear-gradient(#41a9d5,#298fba) !important;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#41a9d5', endColorstr='#298fba', GradientType=0) !important;
+        display:block;
+        text-align:center;
+        text-transform:uppercase;
+        text-decoration:none;
     }
 
 }
